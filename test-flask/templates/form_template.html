@@ -1,0 +1,63 @@
+  <!DOCTYPE html>
+  <html lang="en">
+
+  <head>
+      <title>Alert config page</title>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css"
+          integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+      <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"
+          integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+      <style>
+          /* Set height of the grid so .sidenav can be 100% (adjust as needed) */
+          .row.content {
+              height: 550px
+          }
+
+          /* Set gray background color and 100% height */
+          .sidenav {
+              background-color: #f1f1f1;
+              height: 100%;
+          }
+
+          /* On small screens, set height to 'auto' for the grid */
+          @media screen and (max-width: 767px) {
+              .row.content {
+                  height: auto;
+              }
+          }
+      </style>
+  </head>
+
+  <body>
+      <center>
+          <div class="jumbotron" style="margin: 5%;">
+              <h1 class="display-3"> <img height="50" width="60"
+                      src="https://www.accenture.com/t20190310T012813Z__w__/us-en/_acnmedia/Accenture/Conversion-Assets/DotCom/Images/Global/Dualpub_203/Accenture-hero-medium-logo.png"
+                      alt="Accenture"><br>Threshold for defects alert</h1>
+              <p class="lead">Select threshold value</p>
+              <hr class="my-4"><br>
+              <p>
+                  <form action="http://localhost:5000/result" method="POST">
+                      <div class="form-group">
+                          <input required="true" name="threshold" type="number" min="0" step="1"
+                              class="form-control input-lg" id="threshold" style="width: 40%; padding: 1%;">
+                          <span class="help-block">The threshold is the value that once crossed would result in an
+                              Alert.</span>
+                      </div>
+                      <div class="form-group">
+                          <button type="submit" style="width: 20%;" class="btn btn-success btn-lg"><i class="fas fa-user-cog"></i>   Set
+                              threshold</button>
+                      </div>
+                  </form>
+              </p>
+          </div>
+
+      </center>
+  </body>
+
+  </html>
