@@ -6,8 +6,17 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width, initial-scale=1">
       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
-      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+      <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+          integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous">
+      </script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+          integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous">
+      </script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+          integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous">
+      </script>
       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css"
           integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
       <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"
@@ -30,32 +39,182 @@
                   height: auto;
               }
           }
+
+          .column {
+              float: left;
+              width: 50%;
+          }
+
+          /* Clear floats after the columns */
+          .row:after {
+              content: "";
+              display: table;
+              clear: both;
+          }
       </style>
   </head>
 
   <body>
+<br>
       <center>
-          <div class="jumbotron" style="margin: 5%;">
+          <div class="jumbotron" style="margin-left: 7%; margin-right: 7%;">
               <h1 class="display-3"> <img height="50" width="60"
                       src="https://www.accenture.com/t20190310T012813Z__w__/us-en/_acnmedia/Accenture/Conversion-Assets/DotCom/Images/Global/Dualpub_203/Accenture-hero-medium-logo.png"
-                      alt="Accenture"><br>Threshold for defects alert</h1>
-              <p class="lead">Select threshold value</p>
+                      alt="Accenture"><br>Configure Defects Alert</h1>
+              <p class="lead">Please fill below to configure the alert details</p>
               <hr class="my-4"><br>
-              <p>
-                  <form action="https://techbootcamp.mywizard360.com/melbootcamp2019julyt4_5000/result" method="POST">
-                      <div class="form-group">
-                          <input required="true" name="threshold" type="number" min="0" step="1"
-                              class="form-control input-lg" id="threshold" style="width: 40%; padding: 1%;">
-                          <span class="help-block">The threshold is the value that once crossed would result in an
-                              Alert.</span>
+             
+                  <form action="http://0.0.0.0:5000/result" method="POST">
+                    <div class="form-group">
+                      <div class="row">
+                          <div class="column" style="padding: 2.5%;">
+                              <div class="card" style="height: 100%;">
+                                  <div class="card-body">
+                                      <h3 class="card-title">Standard Threshold Alert</h3>
+                                      <br><br>
+                                      <p>
+                                          <input placeholder="Enter the threshold value" required="true"
+                                              name="threshold_std" type="number" min="0" step="1"
+                                              class="form-control input-lg" id="threshold_std"
+                                              style="width: 100%; padding: 0.5%; padding-left: 4%; font-size: 12px;">
+                                          <span class="help-block" style="font-size: 9px;">The threshold that
+                                              triggers alert</span>
+                                      </p>
+                                      <p>
+                                          <input placeholder="Cron schedule. E.g. 0 * * * *" required="true"
+                                              name="cron_schedule_std" type="text" min="0" step="1"
+                                              class="form-control input-lg" id="cron-schedule_std"
+                                              style="width: 100%; padding: 0.5%; padding-left: 4%; font-size: 12px;">
+
+                                          <span class="help-block" style="font-size: 9px;">This is the schedule that
+                                              will be used to run the
+                                              listener.</span>
+                                      </p>
+                                      <p>
+                                          <input placeholder="Enter your email" required="true" name="email_std"
+                                              type="email" min="0" step="1" class="form-control input-lg" id="email_std"
+                                              style="width: 100%; padding: 0.5%; padding-left: 4%; font-size: 12px;">
+                                          <span class="help-block" style="font-size: 9px;">Scrum master's email,
+                                              this will recieve the alerts when
+                                              triggered.</span>
+                                      </p>
+                                  </div>
+                              </div>
+                          </div>
+                          
+                          <div class="column" style="padding: 2.5%;">
+                              <div class="card" style="height: 100%;">
+                                  <div class="card-body">
+                                      <h3 class="card-title">Sprint-End Dynamic Alert</h3><br><br>
+                                      <p style="float: left; width: 48%; margin-right: 1%;">
+                                          <input placeholder="Enter the threshold value" required="true"
+                                              name="threshold_dyn" type="number" min="0" step="1"
+                                              class="form-control input-lg" id="threshold_dyn"
+                                              style="width: 100%; padding: 0.5%; padding-left: 4%; font-size: 12px;">
+                                          <span class="help-block" style="font-size: 9px;">The threshold that
+                                              triggers alert</span>
+                                      </p>
+                                      <p style="float: left; width: 48%; margin-left: 1%;">
+                                            <input placeholder="Enter number of days" equired="true" name="day_buffer_dyn"
+                                                type="text" min="0" step="1" class="form-control input-lg" id="day_buffer_dyn"
+                                                style="width: 100%; padding: 0.5%; padding-left: 6%; font-size: 12px;">
+  
+                                            <span class="help-block" style="font-size: 9px;">This is how many number
+                                                of days before the sprint end the
+                                                system will check for # of open defects.</span>
+  
+                                        </p>
+                                      <p>
+                                          <input placeholder="Cron schedule. E.g. 0 * * * *" required="true"
+                                              name="cron_schedule_dyn" type="text" min="0" step="1"
+                                              class="form-control input-lg" id="cron-schedule_dyn"
+                                              style="width: 100%; padding: 0.5%; padding-left: 4%; font-size: 12px;">
+
+                                          <span class="help-block" style="font-size: 9px;">This is the schedule that
+                                              will be used to run the
+                                              listener.</span>
+                                      </p>
+                                      <p>
+                                            <input placeholder="Enter your email" required="true" name="email_dyn"
+                                                type="email" min="0" step="1" class="form-control input-lg" id="email_dyn"
+                                                style="width: 100%; padding: 0.5%; padding-left: 4%; font-size: 12px;">
+                                            <span class="help-block" style="font-size: 9px;">Scrum master's email,
+                                                this will recieve the alerts when
+                                                triggered.</span>
+                                        </p>
+                                  </div>
+                              </div>
+                          </div>
                       </div>
+                    </div>
                       <div class="form-group">
-                          <button type="submit" style="width: 20%;" class="btn btn-success btn-lg"><i class="fas fa-user-cog"></i>   Set
-                              threshold</button>
+                          <center>
+                              <p>
+                                  <button type="submit" style="padding: 1%; width: 50%;"
+                                      class="btn btn-success btn-lg"><i class="fas fa-user-cog"></i> Finish
+                                      Configuration</button>
+                              </p>
+                          </center>
                       </div>
                   </form>
-              </p>
+                  <!-- <form action="http://localhost:5000/result" method="POST">
+                      <table style="width: 60%">
+                          <tr>
+                              <td style="padding-right: 1%">
+                                  <p>
+                                      <input placeholder="Enter the threshold value" required="true" name="threshold"
+                                          type="number" min="0" step="1" class="form-control input-lg" id="threshold"
+                                          style="width: 100%; padding: 0.5%; padding-left: 6%; font-size: 12px;">
+                                      <span class="help-block" style="font-size: 9px;">The threshold that triggers
+                                          alert</span>
+                                  </p>
+                              </td>
+                              <td style="padding-left: 1%">
+                                  <p>
+                                      <input placeholder="Cron schedule. E.g. 0 * * * *" equired="true"
+                                          name="cron_schedule" type="text" min="0" step="1"
+                                          class="form-control input-lg" id="cron-schedule"
+                                          style="width: 100%; padding: 0.5%; padding-left: 6%; font-size: 12px;">
+
+                                      <span class="help-block" style="font-size: 9px;">This is the schedule that will be used to run the
+                                          listener.</span>
+                                  </p>
+                              </td>
+                          </tr>
+                          <tr>
+                              <td colspan="2">
+                                  <p>
+                                      <input placeholder="Enter number of days" equired="true" name="day_buffer"
+                                          type="text" min="0" step="1" class="form-control input-lg" id="day_buffer"
+                                          style="width: 100%; padding: 0.5%; padding-left: 6%; font-size: 12px;">
+
+                                      <span class="help-block" style="font-size: 9px;">This is how many number of days before the sprint end the
+                                          system will check for # of open defects.</span>
+
+                                  </p>
+                              </td>
+                          </tr>
+                          <tr>
+                              <td colspan="2">
+                                  <p>
+                                  <input placeholder="Enter your email" required="true" name="email" type="email"
+                                      min="0" step="1" class="form-control input-lg" id="email"
+                                      style="width: 100%; padding: 0.5%; padding-left: 6%; font-size: 12px;">
+                                  <span class="help-block" style="font-size: 9px;">Scrum master's email, this will recieve the alerts when
+                                      triggered.</span>
+                                </p>
+                              </td>
+                          </tr>
+                      </table>
+
+                      <div class="form-group">
+                          <button type="submit" style="width: 20%; padding: 1%;" class="btn btn-success btn-lg"><i
+                                  class="fas fa-user-cog"></i>  Finish Configuration</button>
+                      </div>
+                  </form> -->
+             
           </div>
+
 
       </center>
   </body>
