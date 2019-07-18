@@ -60,13 +60,13 @@ def sendMailToScrumMaster(defect_obj):
     row_index = 1
     for every_defect in defect_obj:
         # assigne name, last up
-        defect_id = int(every_defect['fields']['project']['key'])
+        defect_id = every_defect['fields']['project']['key']
         assignee_name = every_defect['fields']['assignee']['name']
         last_updated = every_defect['fields']['updated']
         project_name = every_defect['fields']['project']['name']
         project_summary = every_defect['fields']['summary']
 
-        message += ('<tr><th scope="row">%d</th><td>%d</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td></tr>', row_index, defect_id, project_name, assignee_name, last_updated, project_summary)
+        message += ('<tr><th scope="row">%d</th><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td></tr>', row_index, defect_id, project_name, assignee_name, last_updated, project_summary)
         row_index += 1
 
     message += '''
