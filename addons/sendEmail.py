@@ -45,7 +45,6 @@ def sendMailToScrumMaster(defect_obj):
 
     <body>
         <center>
-        <div class="jumbotron" style="margin: 5%;">
         <h1 class="display-3">Defect threshold has been passed!</h1>
         <p class="lead">The defect threshold has been crossed and below are the details</p>
         <hr class="my-4">
@@ -84,8 +83,7 @@ def sendMailToScrumMaster(defect_obj):
         </tbody>
         </table>
         <a class="btn btn-primary btn-lg" href="https://techbootcamp.mywizard360.com/melbootcamp2019julyt4_5601/app/kibana#/dashboard/9c7ca7e0-a861-11e9-8eee-e33d10f51134?_g=(filters%3A!()%2CrefreshInterval%3A(pause%3A!t%2Cvalue%3A0)%2Ctime%3A(from%3A'2016-09-28T15%3A05%3A52.732Z'%2Cto%3A'2019-07-31T14%3A00%3A00.000Z'))" role="button">Go to Dashboard!</a>
-        </p>
-        </div>
+        
         </center>
     </body>
     </html>
