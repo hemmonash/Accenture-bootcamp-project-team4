@@ -60,7 +60,7 @@ def sendMailToScrumMaster(defect_obj):
     row_index = 1
     for every_defect in defect_obj:
         # assigne name, last up
-        defect_id = int(every_defect['key'])
+        defect_id = int(every_defect['fields']['project']['key'])
         assignee_name = every_defect['fields']['assignee']['name']
         last_updated = every_defect['fields']['updated']
         project_name = every_defect['fields']['project']['name']
