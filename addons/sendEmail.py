@@ -3,7 +3,7 @@ from email.mime.text import MIMEText
 import smtplib
 
 
-def sendMailToScrumMaster(defect_objs):
+def sendMailToScrumMaster(defect_obj):
     """
     defect_objs: param for the defect objects
     """
@@ -56,8 +56,9 @@ def sendMailToScrumMaster(defect_objs):
         </thead>
         <tbody>
     '''
+    print(defect_obj)
     row_index = 1
-    for every_defect in defect_objs:
+    for every_defect in defect_obj:
         # assigne name, last up
         defect_id = int(every_defect['key'])
         assignee_name = every_defect['fields']['assignee']['name']
