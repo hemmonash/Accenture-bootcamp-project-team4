@@ -40,6 +40,8 @@ def sendMailToScrumMaster(defect_obj):
 
     # Send the message via local SMTP server.
     s = smtplib.SMTP('smtp.gmail.com: 587')
+    s.starttls()
+
     # s.login(msg['From'], password)
 
     # sendmail function takes 3 arguments: sender's address, recipient's address
