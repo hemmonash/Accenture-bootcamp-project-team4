@@ -85,7 +85,7 @@ def sendMailToScrumMaster(defect_obj):
     # setup the parameters of the message
     password = "bootcamp1234"
     msg['From'] = "accenturebootcampteam4@gmail.com"
-    msg['To'] = "krishnendu.c.das@accenture.com" #"asfiya.memon@accenture.com" #["febinaly@getnada.com", "aditivenkateshr@gmail.com", "asfiya.memon@accenture.com", "krishnendu.c.das@accenture.com", "chethzz@hotmail.com", "peter.liang.official@gmail.com", "riababyc@gmail.com"]
+    msg['To'] = "febinaly@getnada.com" #"asfiya.memon@accenture.com" #["febinaly@getnada.com", "aditivenkateshr@gmail.com", "asfiya.memon@accenture.com", "krishnendu.c.das@accenture.com", "chethzz@hotmail.com", "peter.liang.official@gmail.com", "riababyc@gmail.com"]
     msg['Subject'] = "Defect threshold exceeded!"
 
     # add in the message body
