@@ -7,9 +7,48 @@ def sendMailToScrumMaster(defect_obj):
     """
     defect_objs: param for the defect objects
     """
-    # create message object instance
+    # Create message container - the correct MIME type is multipart/alternative.
     msg = MIMEMultipart('alternative')
-    message = '<p>HELLOW WORLD</p><a href="#">asdsadsa</a>'
+    password = "bootcamp1234"
+    msg['From'] = "accenturebootcampteam4@gmail.com"
+    msg['To'] = "kdas0001@student.monash.edu" #"asfiya.memon@accenture.com" #["febinaly@getnada.com", "aditivenkateshr@gmail.com", "asfiya.memon@accenture.com", "krishnendu.c.das@accenture.com", "chethzz@hotmail.com", "peter.liang.official@gmail.com", "riababyc@gmail.com"]
+    msg['Subject'] = "Defect threshold exceeded!"
+
+    # Create the body of the message (a plain-text and an HTML version).
+    text = "Hi!\nHow are you?\nHere is the link you wanted:\nhttp://www.python.org"
+    html = """\
+    <html>
+    <head></head>
+    <body>
+        <p>Hi!<br>
+        How are you?<br>
+        Here is the <a href="http://www.python.org">link</a> you wanted.
+        </p>
+    </body>
+    </html>
+    """
+
+    # Record the MIME types of both parts - text/plain and text/html.
+    part1 = MIMEText(text, 'plain')
+    part2 = MIMEText(html, 'html')
+
+    # Attach parts into message container.
+    # According to RFC 2046, the last part of a multipart message, in this case
+    # the HTML message, is best and preferred.
+    msg.attach(part1)
+    msg.attach(part2)
+
+    # Send the message via local SMTP server.
+    s = smtplib.SMTP('smtp.gmail.com: 587')
+    s.login(msg['From'], password)
+
+    # sendmail function takes 3 arguments: sender's address, recipient's address
+    # and message to send - here it is sent as one string.
+    s.sendmail(msg['From'], msg['To'], msg.as_string())
+    s.quit()
+    # create message object instance
+    # msg = MIMEMultipart('alternative')
+    # message = '<p>HELLOW WORLD</p><a href="#">asdsadsa</a>'
     # message = '''
     # <!DOCTYPE html>
     # <html lang="en">
@@ -83,25 +122,25 @@ def sendMailToScrumMaster(defect_obj):
     # </html>
     # '''
     # setup the parameters of the message
-    password = "bootcamp1234"
-    msg['From'] = "accenturebootcampteam4@gmail.com"
-    msg['To'] = "kdas0001@student.monash.edu" #"asfiya.memon@accenture.com" #["febinaly@getnada.com", "aditivenkateshr@gmail.com", "asfiya.memon@accenture.com", "krishnendu.c.das@accenture.com", "chethzz@hotmail.com", "peter.liang.official@gmail.com", "riababyc@gmail.com"]
-    msg['Subject'] = "Defect threshold exceeded!"
+    # password = "bootcamp1234"
+    # msg['From'] = "accenturebootcampteam4@gmail.com"
+    # msg['To'] = "kdas0001@student.monash.edu" #"asfiya.memon@accenture.com" #["febinaly@getnada.com", "aditivenkateshr@gmail.com", "asfiya.memon@accenture.com", "krishnendu.c.das@accenture.com", "chethzz@hotmail.com", "peter.liang.official@gmail.com", "riababyc@gmail.com"]
+    # msg['Subject'] = "Defect threshold exceeded!"
 
-    # add in the message body
-    msg.attach(MIMEText(message, 'plain'))
+    # # add in the message body
+    # msg.attach(MIMEText(message, 'plain'))
 
-    # create server
-    server = smtplib.SMTP('smtp.gmail.com: 587')
+    # # create server
+    # server = smtplib.SMTP('smtp.gmail.com: 587')
 
-    server.starttls()
+    # server.starttls()
 
-    # Login Credentials for sending the mail
-    server.login(msg['From'], password)
+    # # Login Credentials for sending the mail
+    # server.login(msg['From'], password)
 
-    # send the message via the server.
-    server.sendmail(msg['From'], msg['To'], msg.as_string())
+    # # send the message via the server.
+    # server.sendmail(msg['From'], msg['To'], msg.as_string())
 
-    server.quit()
+    # server.quit()
 
-    print("successfully sent email to %s:" % (msg['To']))
+    # print("successfully sent email to %s:" % (msg['To']))
