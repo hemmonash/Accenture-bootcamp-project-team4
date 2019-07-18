@@ -66,7 +66,9 @@ def sendMailToScrumMaster(defect_obj):
         project_name = every_defect['fields']['project']['name']
         project_summary = every_defect['fields']['summary']
 
-        message += ('<tr><th scope="row">%d</th><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td></tr>', row_index, defect_id, project_name, assignee_name, last_updated, project_summary)
+        table_row_entry = ('<tr><th scope="row">%d</th><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td></tr>', row_index, defect_id, project_name, assignee_name, last_updated, project_summary)
+        print(table_row_entry)
+        message += table_row_entry
         row_index += 1
 
     message += '''
