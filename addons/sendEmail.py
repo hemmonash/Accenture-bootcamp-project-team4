@@ -9,78 +9,79 @@ def sendMailToScrumMaster(defect_obj):
     """
     # create message object instance
     msg = MIMEMultipart()
-    message = '''
-    <!DOCTYPE html>
-    <html lang="en">
+    message = '<p>HELLOW WORLD</p><a href="#">asdsadsa</a>'
+    # message = '''
+    # <!DOCTYPE html>
+    # <html lang="en">
 
-    <head>
+    # <head>
         
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+    #     <meta charset="utf-8">
+    #     <meta name="viewport" content="width=device-width, initial-scale=1">
+    #     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    #     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    #     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    #     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
 
-        <style>
-            /* Set height of the grid so .sidenav can be 100% (adjust as needed) */
-            .row.content {
-                height: 550px
-            }
+    #     <style>
+    #         /* Set height of the grid so .sidenav can be 100% (adjust as needed) */
+    #         .row.content {
+    #             height: 550px
+    #         }
 
-            /* Set gray background color and 100% height */
-            .sidenav {
-                background-color: #f1f1f1;
-                height: 100%;
-            }
+    #         /* Set gray background color and 100% height */
+    #         .sidenav {
+    #             background-color: #f1f1f1;
+    #             height: 100%;
+    #         }
 
-            /* On small screens, set height to 'auto' for the grid */
-            @media screen and (max-width: 767px) {
-                .row.content {
-                    height: auto;
-                }
-            }
-        </style>
-    </head>
+    #         /* On small screens, set height to 'auto' for the grid */
+    #         @media screen and (max-width: 767px) {
+    #             .row.content {
+    #                 height: auto;
+    #             }
+    #         }
+    #     </style>
+    # </head>
 
-    <body>
-        <center>
-        <table class="table">
-        <thead>
-            <tr>
-            <th scope="col">Defect #</th>
-            <th scope="col">Defect ID</th>
-            <th scope="col">Project Name</th>
-            <th scope="col">Assignee Name</th>
-            <th scope="col">Last Updated</th>
-            <th scope="col">Project Summary</th>
-            </tr>
-        </thead>
-        <tbody>
-    '''
-    print(defect_obj)
-    row_index = 1
-    for every_defect in defect_obj:
-        # assigne name, last up
-        defect_id = every_defect['fields']['project']['key']
-        assignee_name = every_defect['fields']['assignee']['name']
-        last_updated = every_defect['fields']['updated']
-        project_name = every_defect['fields']['project']['name']
-        project_summary = every_defect['fields']['summary']
+    # <body>
+    #     <center>
+    #     <table class="table">
+    #     <thead>
+    #         <tr>
+    #         <th scope="col">Defect #</th>
+    #         <th scope="col">Defect ID</th>
+    #         <th scope="col">Project Name</th>
+    #         <th scope="col">Assignee Name</th>
+    #         <th scope="col">Last Updated</th>
+    #         <th scope="col">Project Summary</th>
+    #         </tr>
+    #     </thead>
+    #     <tbody>
+    # '''
+    # print(defect_obj)
+    # row_index = 1
+    # for every_defect in defect_obj:
+    #     # assigne name, last up
+    #     defect_id = every_defect['fields']['project']['key']
+    #     assignee_name = every_defect['fields']['assignee']['name']
+    #     last_updated = every_defect['fields']['updated']
+    #     project_name = every_defect['fields']['project']['name']
+    #     project_summary = every_defect['fields']['summary']
 
-        table_row_entry = '<tr><th scope="row">{}</th><td>{}</td><td>{}</td><td>{}</td><td>{}</td><td>{}</td></tr>'.format(row_index, defect_id, project_name, assignee_name, last_updated, project_summary)
-        print(table_row_entry)
-        message += table_row_entry
-        row_index += 1
+    #     table_row_entry = '<tr><th scope="row">{}</th><td>{}</td><td>{}</td><td>{}</td><td>{}</td><td>{}</td></tr>'.format(row_index, defect_id, project_name, assignee_name, last_updated, project_summary)
+    #     print(table_row_entry)
+    #     message += table_row_entry
+    #     row_index += 1
 
-    message += '''
-        </tbody>
-        </table>
+    # message += '''
+    #     </tbody>
+    #     </table>
         
-        </center>
-    </body>
-    </html>
-    '''
+    #     </center>
+    # </body>
+    # </html>
+    # '''
     # setup the parameters of the message
     password = "bootcamp1234"
     msg['From'] = "accenturebootcampteam4@gmail.com"
