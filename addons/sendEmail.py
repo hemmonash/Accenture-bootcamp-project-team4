@@ -8,7 +8,7 @@ def sendMailToScrumMaster(defect_obj):
     defect_objs: param for the defect objects
     """
     # create message object instance
-    msg = MIMEMultipart()
+    msg = MIMEMultipart('alternative')
     message = '<p>HELLOW WORLD</p><a href="#">asdsadsa</a>'
     # message = '''
     # <!DOCTYPE html>
