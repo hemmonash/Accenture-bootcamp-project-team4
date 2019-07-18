@@ -11,7 +11,7 @@ def sendMailToScrumMaster(defect_obj):
     msg = MIMEMultipart('alternative')
     password = "bootcamp1234"
     msg['From'] = "accenturebootcampteam4@gmail.com"
-    msg['To'] = "kdas0001@student.monash.edu" #"asfiya.memon@accenture.com" #["febinaly@getnada.com", "aditivenkateshr@gmail.com", "asfiya.memon@accenture.com", "krishnendu.c.das@accenture.com", "chethzz@hotmail.com", "peter.liang.official@gmail.com", "riababyc@gmail.com"]
+    msg['To'] = "aditivenkateshr@gmail.com" #"asfiya.memon@accenture.com" #["febinaly@getnada.com", "aditivenkateshr@gmail.com", "asfiya.memon@accenture.com", "krishnendu.c.das@accenture.com", "chethzz@hotmail.com", "peter.liang.official@gmail.com", "riababyc@gmail.com"]
     msg['Subject'] = "Defect threshold exceeded!"
 
     message = '''
@@ -19,7 +19,7 @@ def sendMailToScrumMaster(defect_obj):
     <html lang="en">
 
     <head>
-        
+        <title>Alert config page</title>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
@@ -51,12 +51,12 @@ def sendMailToScrumMaster(defect_obj):
     <body>
         <center>
         <div class="jumbotron" style="margin: 5%;">
-        <h1 class="display-3">Alerts Successfully Configured!</h1>
-        <p class="lead">You will recieve emails consisting of the defect details if the threshold is crossed over a week and also if the defects pass the threshold before certain days prior to sprint end.</p>
+        <h1 class="display-3">Defect threshold has been passed!</h1>
+        <p class="lead">The defect threshold has been crossed and below are the details</p>
         <hr class="my-4">
-        <p>You can always change these details <a href="https://techbootcamp.mywizard360.com/melbootcamp2019julyt4_5000">here</a></p>
+        <p>You can always re-configure alert details <a href="https://techbootcamp.mywizard360.com/melbootcamp2019julyt4_5000">here</a></p>
         <p class="lead">
-          
+
         <table class="table">
         <thead>
             <tr>
@@ -121,6 +121,7 @@ def sendMailToScrumMaster(defect_obj):
     # and message to send - here it is sent as one string.
     s.sendmail(msg['From'], msg['To'], msg.as_string())
     s.quit()
+    print("successfully sent email to %s:" % (msg['To']))
     # create message object instance
     # msg = MIMEMultipart('alternative')
     # message = '<p>HELLOW WORLD</p><a href="#">asdsadsa</a>'
